@@ -17,7 +17,7 @@ export default function RoomCell({value}:{value:number}) {
         "W":"",
     }
     return (
-        <div className={`w-full h-full border flex items-center justify-center ${classValueMap[entry]} h-[4rem] w-[4rem]`}>
+        <div className={`border flex items-center justify-center ${classValueMap[entry]} h-[4rem] w-[4rem]`}>
          {value ? valueMap[entry]: ""}
         </div>
     )
