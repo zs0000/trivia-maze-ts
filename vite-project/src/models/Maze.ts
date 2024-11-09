@@ -1,9 +1,30 @@
 import Room from "./Room";
 
+
+/**
+ * Maze class
+ * 
+ * This class represents a maze. It is a 2D array of Room objects, along with some other properties.
+ * 
+ * @author Ethan Moore
+ * @author Zach Sanchez
+ * @version 1.0
+*/
 export default class Maze{
 
+    /**
+     * 2D array of Room objects
+     */
     private myRooms:Room[][];
+
+    /**
+     * The starting room
+     */
     private myStartingRoom!: Room;
+
+    /**
+     * The exit room
+     */
     private myExitRoom!: Room;
 
     constructor(theMaze:number[][]){
@@ -16,17 +37,21 @@ export default class Maze{
             
             switch(theMaze[i][j]){
                 case 5:
+                    this.myRooms[i][j].setTypeAsNumber(7);
                     this.myStartingRoom = this.myRooms[i][j];
                     this.myStartingRoom.setIsOpen(true);
                     break;
                 case 9:
+                    this.myRooms[i][j].setTypeAsNumber(9);
                     this.myExitRoom = this.myRooms[i][j];
                     this.myExitRoom.setIsOpen(true);
                     break;
                 case 1:
+                    this.myRooms[i][j].setTypeAsNumber(1);
                     this.myRooms[i][j].setIsOpen(true);
                     break;
                 case 4:
+                    this.myRooms[i][j].setTypeAsNumber(4);
                     this.myRooms[i][j].setIsItemRoom(true);
                     this.myRooms[i][j].setIsOpen(true);
                     break;
@@ -37,15 +62,33 @@ export default class Maze{
         }
     }
 
-    public getStartingRoom(){
+
+    /**
+     * Get the starting room
+     * 
+     * @returns {Room} - The starting room
+    */
+    public getStartingRoom(): Room{
         return this.myStartingRoom;
     }
 
-    public getExitRoom(){
+    /**
+     * Get the exit room
+     * 
+     * @returns {Room} - The exit room
+    */
+    public getExitRoom() : Room{
         return this.myExitRoom;
     }
 
-    public getAdjacentRoom({currentRoom, direction}:{currentRoom:Room, direction:string}){
+    /**
+     * Get the room at a given row and column
+     * 
+     * @param theRow the row of the room
+     * @param theCol the column of the room
+     * @returns Room; the room at the given row and column, or null if not found/valid
+    */
+    public getAdjacentRoom({currentRoom, direction}:{currentRoom:Room, direction:string}): Room | null{
         let theRow:number = currentRoom.getRow();
         let theCol:number = currentRoom.getCol();
 
@@ -64,6 +107,17 @@ export default class Maze{
 
     }
 
+    /**
+     * Get the maze 
+     * 
+     * @returns {Room[][]} - The maze
+    */
+    public getMaze():Room[][]{
+        return this.myRooms;
+    }
+    /**
+     * Print the maze to the console
+    */
     public printMaze(){
         console.log("+" + "-".repeat(this.myRooms[0].length ) + "+");
         for(let i = 0; i < this.myRooms.length; i++){
