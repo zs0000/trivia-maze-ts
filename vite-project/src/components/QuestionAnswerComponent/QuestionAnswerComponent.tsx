@@ -1,4 +1,4 @@
-import React from 'react'
+
 import s from './QuestionAnswerComponent.module.css';
 export default function QuestionAnswerComponent() {
   return (
