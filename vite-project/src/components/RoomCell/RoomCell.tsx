@@ -1,6 +1,5 @@
 import { useThemeContext } from "../../context/ThemeContext";
 import Room from "../../models/Room";
-import { useEffect, useState } from "react";
 
 export default function RoomCell({ room }: { room: Room }) {
   const entry = room.getTypeAsNumber() ? room.getTypeAsNumber() : "W";
