@@ -3,10 +3,14 @@ import MazeGenerator from "../../models/MazeGenerator";
 import s from"./PreGameOptionsComponent.module.css"
 import { useMazeContext } from "../../context/MazeContext";
 import { useEffect } from "react";
+import { lightThemeColors, darkThemeColors } from "../../ThemeColors";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export default function PreGameOptionsComponent() {
 
     const {mySize, setMySize, setMyMazeAsNumbers, setLoading, setStarted, setCurrentRoom, setMyMaze} = useMazeContext();
+    const {theme} = useThemeContext();
+    const themeColors = theme === "light" ? lightThemeColors : darkThemeColors;
 
     const handleClickButton = async() => {
         try { 
@@ -34,16 +38,18 @@ export default function PreGameOptionsComponent() {
         }
       }, [mySize]);
 
+      
+
   return (
     <div className={s.container}>
 
 
       <div className={s.sizeContainer}>
-        <span className={s.sizeLabel}>Size</span>
+        <span className={`${s.sizeLabel} size-text`}>Size</span>
         <input className={s.sizeInput} type="number" value={mySize} onChange={(e) => setMySize(parseInt(e.target.value))} />
       </div>
  
-      <button disabled={!mySize || mySize < 4} className={!mySize || mySize < 4 ? s.disabledButton : s.button} onClick={handleClickButton}>Generate Maze</button>
+      <button disabled={!mySize || mySize < 4} className={ !mySize || mySize < 4 ? themeColors.disabledButton : themeColors.primaryButton} onClick={handleClickButton}>Generate Maze</button>
 
       </div>
   )

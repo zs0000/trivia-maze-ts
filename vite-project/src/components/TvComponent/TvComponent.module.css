@@ -1,0 +1,17 @@
+.tvContainer{
+    @apply w-full h-full flex flex-col items-center justify-center;
+}
+
+.mazeContainer{
+    @apply w-full h-full;
+}
+
+.outerContainer{
+    @apply h-full p-4 bg-gradient-to-r from-amber-950 via-amber-900 to-amber-950;
+}
+
+.innerContainer{
+    @apply h-full px-8 py-1 rounded-lg bg-gradient-to-tr from-black via-gray-800 to-gray-900;
+}
+
+

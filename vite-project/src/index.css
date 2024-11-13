@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    @apply transition-colors duration-200
+}
+
+.dark .background {
+    @apply dark:bg-gray-900
+}
+
+.dark .header {
+    @apply dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300
+}
+
+.dark .size-text {
+    @apply dark:text-gray-300
+}
+
